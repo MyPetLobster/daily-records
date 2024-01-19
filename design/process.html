@@ -100,8 +100,57 @@
         <div class="process-part">
             <h3>Creating the database</h3>
             <p>Time to translate the ERD to a schema.sql file.</p>
+            <p>
+                I started by reading through the startup guides on MySQL.com. Most of the syntax and commands are very similar or identical to 
+                those used in SQLite, so that wasn't hard to get familiar with. I started by translating the ERD to a schema.sql file. 
+                Once I had a first draft done, I went and asked my GPT friend to look it over for me. They gave me some feedback suggesting that 
+                I look into foreign key constraints and normalization. I was somewhat familiar with both of these terms, and I know we went over 
+                them in the course, but I had to do some research to refresh my memory. 
+            </p>
+            <h4>Foreign Key Constraints</h4>
+            <p>
+                In summary the purpose of foreign key constraints is to ensure that the data in the database is consistent. It ensures that 
+                the data in one table matches the data in another table. For example, if I have a table of clients and a table of jobs, I want
+                to make sure that the client_id in the jobs table matches the client_id in the clients table. If I delete a client, I want to 
+                make sure that all of the jobs associated with that client are also deleted.
+            </p>
+            <h4>Normalization</h4>
+            <p>
+                Normalization is a term I was already familiar with in the context of audio engineering. It's the process of making sure that
+                the volume of a track is consistent throughout the track, or in line with another target or standard. In the context of
+                databases, normalization is the process of organizing the data in a database to reduce redundancy and dependency.
+            </p>
+            <ul>
+                <li>
+                    First Normal Form (1NF): Each cell in a table must contain only one piece of information, and there should be no duplicate 
+                    rows.
+                </li>
+                <li>
+                    Second Normal Form (2NF): Meet all the requirements of 1NF, and every non-key column must be fully dependent on the table's 
+                    primary key (not just a part of it).
+                </li>
+                <li>
+                    Third Normal Form (3NF): Meet all the requirements of 2NF, and there should be no columns that are indirectly dependent on 
+                    the primary key (i.e., no transitive dependencies).
+                </li>
+            </ul>
+            <p> 
+                I also downloaded the MySQL Workbench app and imported my schema and created an ERD with that tool. I found it very useful to 
+                be able to include some more information about the values in each table in the diagram. Here is that diagram:
+            </p>
+            <img src="images/daily_records_erd_workbench.png" alt="ERD Diagram" style="max-width: 800px">
+            <div class="summary">
+                <h4>References and Resources</h4>
+                <ul>
+                    <li><a href="https://www.mysql.com/products/workbench/">Started using MySQL Workbench</a></li>
+                    <li><a href="https://dev.mysql.com/doc/mysql-getting-started/en/">MySQL.com Getting Started</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=QpdhBUYk7Kk">ERD Tutorial</a></li>
+                    <li><a href="https://www.essentialsql.com/get-ready-to-learn-sql-8-database-first-normal-form-explained-in-simple-english/">First Normal Form</a></li>
+                    <li><a href="https://www.essentialsql.com/get-ready-to-learn-sql-10-database-second-normal-form-explained-in-simple-english/">Second Normal Form</a></li>
+                    <li><a href="https://www.essentialsql.com/get-ready-to-learn-sql-11-database-third-normal-form-explained-in-simple-english/">Third Normal Form</a></li>
+                </ul>
+            </div>
         </div>
-
     </div>
 </body>
 </html>

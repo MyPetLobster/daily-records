@@ -26,6 +26,10 @@ a database would be a good way to do that.
 * Projects, a list of programming projects I've worked on, including the name, description, and status
 
 ### People, places, things, etc. outside the scope of the database:
+Outside the scope of the database are:
+* Financial transactions and bank account information
+* Mileage or travel data beyond time spent traveling to and from jobs
+* Personal information beyond contact information for clients
 
 ## Functional Requirements
 
