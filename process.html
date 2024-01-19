@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Records Process</title>
+</head>
+<body>
+    <h1>Daily Records Process</h1>
+    <h2>CS50 SQL Final Project</h2>
+
+    <h3>Project Goals</h3>
+    <ul>
+        <li>Create a project that I will actually use regularly</li>
+        <li>Use a new DBMS other than Sqlite to try something new</li>
+        <li>Create a database to keep track of my "daily records" to replace my Notes app folder</li>
+        <li>Keep track of work hours, school hours, jobs, clients, things I'm learning, etc.</li>
+        <li>Create a simple interface that will be easy for me to use</li>
+        <li>Ability to check totals and summaries</li>
+        <li>Ability to export data to CSV</li>
+        <li>Ability to generate invoices automatically (or info for invoices)</li>
+    </ul>
+
+    <h3>Project Process</h3>
+    <p class="process-description">
+        I will be keeping track of my process as I create the project and constantly updating the information below. I started 
+        making these process.html files with BookcaseDatabase.com, and I've found it incredibly useful for reinforcing concepts 
+        I'm learning and giving me a reference for future projects. I'm hoping to do the same with this project.
+    </p>
+
+    <div class="full-process">
+        <div class="process-part">
+            <h3>Initial Brainstorming, Choosing a Database Management System</h3>
+            <p>
+                I wanted to create a project that I would actually use on a daily basis. I have a folder in my Notes app on my
+                phone where I keep track of my work hours, school hours, and other things I'm learning. My current process is 
+                every few days I open Google Maps and look at my timeline to see where I was and what I was doing. Then I open 
+                my Notes app and create a new note with the date and time and write down what I was doing. Then when it comes time 
+                to send invoices I have to go through all of my notes one by one and add up the hours.
+            </p>
+            <p>
+                I started taking programming courses on August 24, 2023. Since then, I've been keeping track of the hours I've put 
+                in each day and the things I've been learning. I guess I just have a thing for keeping records. I decided to make a 
+                project that would replace my Notes app folder and make it easier for me to keep track of my hours and what I'm
+                learning. I also wanted to make it easy to export the data to CSV and generate invoices automatically. I'd like to 
+                be able to see totals and summaries of my hours spent at specific jobs or working on specific projects.  
+            </p>
+            <p>
+                I opted to give MySQL a try. But in the process I learned a bit about the differences between MySQL, PostgreSQL, 
+                and SQLite. I realized that SQLite would probably be the best option for a simple single-user project like this. But I 
+                also realized that SQLite was NOT the RDBMS to use for my last big project, Bookcase Database. Luckily, I currently have 
+                three total users -- me, my aunt, and my friend. So I should be okay for now. However, I'm thinking that I will migrate 
+                Bookcase Database from SQLite to MySQL or PostgreSQL in the future. So I decided to try using MySQL for this project to 
+                get comfortable with it. PostgreSQL seemed like overkill for this and even Bookcase Database. 
+            </p>
+            <p>
+                Took a minute because of issues with the PATH but I got MySQL installed and a server running. Using MySQL seems like it 
+                will be very straightforward. Now that I have that installed and ready to roll, I'm going to start planning the database 
+                itself.
+            </p>
+            <div class="summary">
+                <h4>References and Resources</h4>
+                <ul>
+                    <li><a href="https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems">SQLite vs MySQL vs PostgreSQL</a></li>
+                    <li><a href="https://dev.mysql.com/doc/mysql-getting-started/en/">MySQL.com Getting Started</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-part">
+            <h3>Database Design</h3>
+            <p>
+                I decided to start visually. I found a website <a href="https://online.visual-paradigm.com/">Visual-Paradigm</a> where I could 
+                create a free account and create a visual ERD. I started with the basics. I created a table for Days, Clients, Jobs, Work Hours,
+                Learning Hours, Expenses and Invoices. 
+            </p>
+            <h5>Here is what my ERD diagram...(entity relationship diagram, diagram?) looks like as of now</h5>
+            <img src="images/erd-01.png" alt="ERD Diagram" style="max-width: 800px">
+            <p>
+                I thought through all the relationships between tables to make sure it all made sense. I decided to add a table for Courses and 
+                a table for Projects. 
+            </p>
+            <h5>Here is what my ERD looks like now</h5>
+            <img src="images/erd-02.png" alt="ERD Diagram" style="max-width: 800px">
+
+            <h5>....And another update to the ERD.</h5>
+            <img src="images/erd-03.png" alt="ERD Diagram" style="max-width: 800px">
+            <p>
+                As you can see, I've created the relationships between the tables using association tables (aka junction tables, join tables, 
+                etc.).
+            </p>
+            <div class="summary">
+                <h4>References and Resources</h4>
+                <ul>
+                    <li><a href="https://online.visual-paradigm.com/">Visual-Paradigm</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=QpdhBUYk7Kk">ERD Tutorial</a></li>
+                    <li><a href="https://chat.openai.com">I made "my own" GPT who is a professional database designer. Got help from them</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-part">
+            <h3>Creating the database</h3>
+            <p>Time to translate the ERD to a schema.sql file.</p>
+        </div>
+
+    </div>
+</body>
+</html>
