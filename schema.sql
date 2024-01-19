@@ -16,7 +16,7 @@ CREATE TABLE project (
     project_description TEXT NOT NULL,
     tools_used TEXT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES course(id)
+    CONSTRAINT fk_project_course FOREIGN KEY (course_id) REFERENCES course(id)
 );
 
 -- Represent all of my courses
@@ -38,15 +38,15 @@ CREATE TABLE learning_time_block (
     summary VARCHAR(255) NOT NULL,
     topics_covered TEXT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_day FOREIGN KEY (day_id) REFERENCES day(id)
+    CONSTRAINT fk_learning_time_block_day FOREIGN KEY (day_id) REFERENCES day(id)
 );
     
 -- Association table to represent the courses I worked on in a given time block
 CREATE TABLE blocks_courses (
     learning_time_block_id INT unsigned NOT NULL,
     course_id INT unsigned NOT NULL,
-    CONSTRAINT fk_learning_block FOREIGN KEY (learning_time_block_id) REFERENCES learning_time_block(id),
-    CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES course(id),
+    CONSTRAINT fk_blocks_courses_learning_block FOREIGN KEY (learning_time_block_id) REFERENCES learning_time_block(id),
+    CONSTRAINT fk_blocks_courses_course FOREIGN KEY (course_id) REFERENCES course(id),
     PRIMARY KEY (learning_time_block_id, course_id)
 );
 
@@ -54,8 +54,8 @@ CREATE TABLE blocks_courses (
 CREATE TABLE blocks_projects (
     learning_time_block_id INT unsigned NOT NULL,
     project_id INT unsigned NOT NULL,
-    CONSTRAINT fk_learning_block FOREIGN KEY (learning_time_block_id) REFERENCES learning_time_block(id),
-    CONSTRAINT fk_project FOREIGN KEY (project_id) REFERENCES project(id),  
+    CONSTRAINT fk_blocks_projects_learning_block FOREIGN KEY (learning_time_block_id) REFERENCES learning_time_block(id),
+    CONSTRAINT fk_blocks_projects_project FOREIGN KEY (project_id) REFERENCES project(id),  
     PRIMARY KEY (learning_time_block_id, project_id)
 );
 
@@ -67,15 +67,15 @@ CREATE TABLE work_time_block (
     travel_hours DECIMAL(4,2) NOT NULL,
     work_summary TEXT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FOREIGN KEY (day_id) REFERENCES day(id)
+    CONSTRAINT fk_work_block_day FOREIGN KEY (day_id) REFERENCES day(id)
 );
 
 -- Association table to represent the jobs I worked on in a given time block
-CREATE TABLE block_job (
+CREATE TABLE blocks_jobs (
     work_time_block_id INT unsigned NOT NULL,
     job_id INT unsigned NOT NULL,
-    FOREIGN KEY (work_time_block_id) REFERENCES work_time_block(id),
-    FOREIGN KEY (job_id) REFERENCES job(id),
+    CONSTRAINT fk_blocks_jobs_work_block FOREIGN KEY (work_time_block_id) REFERENCES work_time_block(id),
+    CONSTRAINT fk_block_jobs_job FOREIGN KEY (job_id) REFERENCES job(id),
     PRIMARY KEY (work_time_block_id, job_id)
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE job (
     job_rate INT unsigned NOT NULL,
     job_status VARCHAR(20) NOT NULL, -- "planned", "active", "done/unpaid", "done/paid"
     PRIMARY KEY (id),
-    FOREIGN KEY (client_id) REFERENCES client(id)
+    CONSTRAINT fk_job_client FOREIGN KEY (client_id) REFERENCES client(id)
 );
 
 -- Represent all of my clients for my handyman business
@@ -111,7 +111,7 @@ CREATE TABLE purchase (
     purchase_amount DECIMAL(6,2) NOT NULL,
     reimbursed BOOLEAN NOT NULL default 0, -- 0 = false, 1 = true
     PRIMARY KEY (id),
-    FOREIGN KEY (job_id) REFERENCES job(id)
+    CONSTRAINT fk_purchase_job FOREIGN KEY (job_id) REFERENCES job(id)
 );
 
 
@@ -125,5 +125,5 @@ CREATE TABLE invoice (
     invoice_amount DECIMAL(6,2) NOT NULL,
     invoice_paid BOOLEAN NOT NULL default 0, -- 0 = false, 1 = true
     PRIMARY KEY (id),
-    FOREIGN KEY (job_id) REFERENCES job(id)
+    CONSTRAINT fk_invoice_job FOREIGN KEY (job_id) REFERENCES job(id)
 );
