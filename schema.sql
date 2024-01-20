@@ -1,7 +1,7 @@
 -- REPRESENT EACH DAY
 CREATE TABLE day (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    date DATE NOT NULL,
+    day_date DATE NOT NULL,
     day_summary TEXT NOT NULL,
     PRIMARY KEY (id)
 );
@@ -11,12 +11,12 @@ CREATE TABLE day (
 -- Represent all blocks of time spent working for my handyman business
 CREATE TABLE work_time_block (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    work_date DATE NOT NULL,
+    work_day_id INT unsigned NOT NULL,
     work_hours DECIMAL(4,2) NOT NULL,
     travel_hours DECIMAL(4,2) NOT NULL,
     work_summary TEXT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_work_block_day FOREIGN KEY (work_date) REFERENCES day(date)
+    CONSTRAINT fk_work_day_id FOREIGN KEY (work_day_id) REFERENCES day(id)
 );
 
 -- Represent all of the individual jobs for my handyman business
@@ -82,12 +82,12 @@ CREATE TABLE blocks_jobs (
 -- Represent all of blocks of time spent learning
 CREATE TABLE learning_time_block (
     id INT unsigned NOT NULL AUTO_INCREMENT,
-    learn_date DATE NOT NULL,
+    learn_day_id INT unsigned NOT NULL,
     learn_hours DECIMAL(4,2) NOT NULL,
     learn_summary VARCHAR(255) NOT NULL,
     learn_topics TEXT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_learning_time_block_day FOREIGN KEY (learn_date) REFERENCES day(date)
+    CONSTRAINT fk_learn_day_id FOREIGN KEY (learn_day_id) REFERENCES day(id)
 );
 
 -- Represent all my coding projects
