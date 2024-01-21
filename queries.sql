@@ -26,18 +26,6 @@ WHERE job_id = (
 ) AND work_date BETWEEN '2024-01-01' AND '2024-01-31';
 
 
--- Generate data for an invoice for a specific job with the current date 
-INSERT INTO invoice (job_id, invoice_date, work_hours_total, reimbursement_total, invoice_amount, invoice_paid)
-VALUES (
-    (SELECT id FROM job WHERE job_name = 'Job Name'),
-    CURDATE(),
-    (SELECT SUM(work_hours) FROM work_time_block WHERE job_id = (SELECT id FROM job WHERE job_name = 'Job Name')),
-    (SELECT SUM(purchase_amount) FROM purchase WHERE job_id = (SELECT id FROM job WHERE job_name = 'Job Name')),
-    (SELECT SUM(work_hours) * job_rate FROM work_time_block WHERE job_id = (SELECT id FROM job WHERE job_name = 'Job Name')) + (SELECT SUM(purchase_amount) FROM purchase WHERE job_id = (SELECT id FROM job WHERE job_name = 'Job Name')),
-    0
-);
-
-
 -- Get the total income from all invoices within a specific time period
 SELECT SUM(invoice_amount)
 FROM invoice
