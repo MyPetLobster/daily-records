@@ -1,7 +1,9 @@
 # Daily Records
 ## By Cory Suzuki
 
-Video overview: <URL HERE>
+Video overview: https://www.youtube.com/watch?v=bL6vYFwRMJg  
+
+Full Process HTML document: https://mypetlobster.github.io/daily-records-process/
 
 # Scope
 

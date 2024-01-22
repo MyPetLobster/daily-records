@@ -83,7 +83,7 @@
             <img src="images/erd-02.png" alt="ERD Diagram" style="max-width: 800px">
 
             <h5>....And another update to the ERD.</h5>
-            <img src="images/erd-03.png" alt="ERD Diagram" style="max-width: 800px">
+            <img src="images/daily-records-erd-labels.png" alt="ERD Diagram" style="max-width: 800px">
             <p>
                 As you can see, I've created the relationships between the tables using association tables (aka junction tables, join tables, 
                 etc.).
@@ -138,7 +138,7 @@
                 I also downloaded the MySQL Workbench app and imported my schema and created an ERD with that tool. I found it very useful to 
                 be able to include some more information about the values in each table in the diagram. Here is that diagram:
             </p>
-            <img src="images/daily_records_erd_workbench.png" alt="ERD Diagram" style="max-width: 800px">
+            <img src="images/daily-records-erd-workbench.png" alt="ERD Diagram" style="max-width: 800px">
             <div class="summary">
                 <h4>References and Resources</h4>
                 <ul>
@@ -150,6 +150,47 @@
                     <li><a href="https://www.essentialsql.com/get-ready-to-learn-sql-11-database-third-normal-form-explained-in-simple-english/">Third Normal Form</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="process-part">
+            <h3>Implementing the Database and Final Thoughts</h3>
+            <p>
+                I ran into trouble because of the order in which I was adding tables to the database. In retrospect, it seems 
+                pretty obvious that I need to add a table before I can reference it in another table. But I was trying to add 
+                the tables in the order that they appeared in the ERD. I was getting errors like "ERROR 1215 (HY000): Cannot add
+                foreign key constraint". But what's a good project without a little debugging. Got that sorted out then spent some 
+                more time adjusting the schema and ERD. I kept getting the one-to-one, one-to-many, and many-to-many relationships 
+                mixed up in my head. But something finally started clicking for me by the end of this. 
+            </p>
+            <p>
+                I decided to do some googling about stored procedures and I actually added a few to the database. I created a stored 
+                procedure to add all the relevant information for a work time block and a learning time block. I also went through something
+                iterations with my query to generate an invoice. I'm still not sure if I'm doing it the best way, but I'm happy with the 
+                results. I'm able to generate an invoice for a client that includes all the relevant information.
+            </p>
+            <p>
+                As with the CS50 Python final project that I recently completed, I decided to stop myself from taking the project 
+                further before submitting. However, I've already begun working on implementing my Python chatbot into my Bookcase 
+                Database website, and I intend to actually use this project, Daily Records. So in my spare time I will be working 
+                on building a GUI to make it easier to input data. Perhaps I'll even make it a web app. But I'm eager to continue 
+                learning and not get bogged down by my perfectionism and desire to make everything perfect before I move on.
+            </p>
+            <p>
+                I just cleaned up the code and made a final pass on my ER diagrams and recorded the submission video for my project.
+            </p>
+            <p>
+                Here is a link to the video:  <a href="https://www.youtube.com/watch?v=bL6vYFwRMJg">Daily Records - CS50 SQL Final Project</a>
+            </p>
+            <p>
+                And here is a link to the GitHub repo: <a href="https://github.com/MyPetLobster/daily-records">Daily Records GitHub Repo</a>
+            </p>
+            <div class="summary">
+                <h4>References and Resources</h4>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=X_umYKqKaF0">MySQL Workbench Tutorial Youtube Video</a></li>
+                    <li><a href="https://www.guru99.com/introduction-to-mysql-workbench.html">Guru99 Workbench Tutorial</a></li>
+                    <li><a href="https://stackoverflow.com/questions/26329775/error-code-1822-failed-to-add-the-foreign-key-constaint-missing-index-for-con">Stackoverflow thread about the error I encountered</a></li>
+                    <li><a href="https://online.visual-paradigm.com/">Visual Paradigm - Tool I used for colorful ERD</a></li>
+                </ul>
         </div>
     </div>
 </body>
